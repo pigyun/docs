@@ -101,6 +101,122 @@ const myFavoritePokemon = [/* ... */];
 
 ```
 
+### Dynamic JSX Expressions
+
+Astro components can define local variables inside of the frontmatter component script. Any script variables are then automatically available in the component's HTML template below.
+
+#### Dynamic Values
+
+These local variables can be used in curly braces to pass values to be used as HTML output:
+
+```astro
+---
+const name = "Astro";
+---
+<div>
+  <h1>Hello {name}!</h1>
+</div>
+```
+
+#### Dynamic Attributes
+
+These local variables can be used in curly braces to pass attribute values to HTML elements and components:
+
+```astro
+---
+const name = "Astro";
+---
+<h1 class={name}>Attribute expressions are supported</h1>
+
+<MyComponent templateLiteralNameAttribute={`MyNameIs${name}`} />
+```
+
+#### Dynamic HTML
+
+These local variables can be used in JSX-like functions to produce dynamically-generated HTML elements:
+
+```astro
+---
+const items = ["Dog", "Cat", "Platipus"];
+---
+<ul>
+  {items.map((item) => (
+    <li>{item}</li>
+  ))}
+</ul>
+```
+
+#### Fragments & Multiple Elements
+
+Remember: an Astro component template can render multiple elements with no need to wrap everything in a single `<div>` or `<>`.
+
+However, when using an Astro JSX-like expression to dynamically create elements, you must wrap these multiple elements inside of a **Fragment** just like you would in JavaScript or JSX. Astro supports using either `<Fragment> </Fragment>` or `<> </>`.
+
+```astro
+---
+const items = ["Dog", "Cat", "Platipus"];
+---
+<ul>
+  {items.map((item) => (
+    <>
+      <li>Red {item}</li>
+      <li>Blue {item}</li>
+      <li>Green {item}</li>
+    </>
+  ))}
+</ul>
+```
+
+
+### Component Props
+
+An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the `Astro.props` global in your frontmatter script.
+
+Here is an example of a component that receives a `greeting` prop and a `name` prop. Notice that the props to be received are destructured from the global `Astro.props` object.
+
+```astro
+// src/components/GreetingHeadline.astro
+---
+const { greeting, name } = Astro.props
+---
+<h2>{greeting}, {name}!</h2>
+```
+These props can also be given default values when destructured from `Astro.props`:
+
+```astro
+const { greeting = "Hello", name } = Astro.props
+```
+
+You can also define your props with TypeScript by exporting a `Props` type interface. Astro will automatically pick up any exported `Props` interface and give type warnings/errors for your project.
+
+```astro
+// src/components/GreetingHeadline.astro
+---
+export interface Props {
+  name: string;
+  greeting?: string;
+}
+
+const { greeting = "Hello", name } = Astro.props
+---
+<h2>{greeting}, {name}!</h2>
+```
+
+This component, when imported and rendered in other Astro components, layouts or pages, can be passed these props as attributes:
+
+```astro
+// src/components/GreetingListing.astro
+---
+import GreetingHeadline from './GreetingHeadline.astro';
+---
+<h1>Greeting Listing</h1>
+<GreetingHeadline greeting="Hi" name="Astro" />
+<p>I hope you have a wonderful day!</p>
+```
+
+
+
+
 ### CSS Styles
 
 CSS `<style>` tags are also supported inside of the component template. 
