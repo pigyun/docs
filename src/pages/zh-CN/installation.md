@@ -54,7 +54,7 @@ npm install
 
 ## 手动安装
 
-当然没有 `create-astro` 工具的协助，也可以创建 Astro 工程。 接下来就是要让 Astro 运行起来的一些额外步骤。
+当然如果没有 `create-astro` 工具的协助，也仍然可以创建 Astro 工程。 接下来就是手动让 Astro 运行起来的一些额外步骤。
 
 ### 创建项目
 
@@ -73,13 +73,13 @@ npm init --yes
 
 Astro 被设计为与整个 npm 软件包生态系统一起工作。这是由项目根目录下的 `package.json` 管理的。
 
-如果你不熟悉 `package.json` 文件，我们强烈建议你在[npm 文档](https://docs.npmjs.com/creating-a-package-json-file)上快速阅读它。
+如果你不熟悉 `package.json` 文件，我们强烈建议你在[npm 文档](https://docs.npmjs.com/creating-a-package-json-file)上快速阅读并了解它。
 
 ### 安裝 Astro
 
 按照上面的说明，你的工程目录下会新建一个 `package.json` 文件。
 
-现在你可以在你的项目中安装 Astro
+现在你可以在你的项目中安装 Astro了
 
 ```bash
 npm install astro
@@ -97,7 +97,7 @@ npm install astro
 }
 ```
 
-[`dev`](#start-dev) 命令在 `http://localhost:3000` 上启动 Astro 开发服务器。一旦你的项目准备好了。
+一旦你的项目准备好了，可以使用[`dev`](#start-dev) 命令在本地的3000端口上 `http://localhost:3000` 上启动 Astro 开发服务器。
 
 [`build`](#build-astro)命令将你的项目输出到 `dist/` 目录。[在部署指南中阅读更多关于部署 Astro 的内容。](/guides/deploy)
 
