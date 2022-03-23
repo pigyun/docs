@@ -26,8 +26,6 @@ export const SIDEBAR = {
 
 		{ text: 'Features', header: true, type: 'learn' },
 		{ text: 'CSS & Styling', link: 'en/guides/styling' },
-		// MOVE "Slots": Into Astro Component Syntax
-		{ text: 'Slots', link: 'en/guides/slots' },
 		{ text: 'Debugging', link: 'en/guides/debugging' },
 		// ADD: Customizing Astro
 		{ text: 'Data Fetching', link: 'en/guides/data-fetching' },
