@@ -214,6 +214,7 @@ import GreetingHeadline from './GreetingHeadline.astro';
 <p>I hope you have a wonderful day!</p>
 ```
 
+### Slots
 
 The `<slot>` element is a placeholder for HTML which will be passed in from outside of the component by "children" (as they are called in React or Preact). Slots are a way of passing data into an Astro component and are useful when you will want to reuse an "outer" component, rendered "around" data coming from an external source.
 
